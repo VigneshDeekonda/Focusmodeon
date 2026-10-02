@@ -415,6 +415,11 @@ function onFocusComplete() {
 
   pauseAmbient();
 
+  // Increment session count as soon as a focus session finishes
+  state.sessionCount++;
+  dom.sessionCountDisplay.textContent = `Session ${state.sessionCount}`;
+  saveState();
+
   if (state.autostartBreak) {
     showCompletionNotification(true);
     setTimeout(() => {
@@ -430,10 +435,6 @@ function onFocusComplete() {
 function onBreakComplete() {
   playSoundEffect('ding');
   sendNotification("Break's over!", 'Ready to focus again?');
-
-  state.sessionCount++;
-  dom.sessionCountDisplay.textContent = `Session ${state.sessionCount}`;
-  saveState();
 
   if (state.autostartFocus) {
     setTimeout(() => {
