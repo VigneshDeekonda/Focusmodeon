@@ -2,12 +2,5 @@
   publish = "."
   command = ""
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "*.mp3"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+[build.environment]
+  NODE_VERSION = "18"
